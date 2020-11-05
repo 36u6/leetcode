@@ -14,22 +14,14 @@ public class Solution {
     }
 
     public int maxProfit(int[] prices) {
-        if (prices == null || prices.length == 0) {
+        if(prices.length <= 1) {
             return 0;
         }
-        int n = prices.length;
-        //创建两个数组，一个记录每次卖出的最大收益，一个记录每次买入最大收益
-        int[] sell = new int[n];
-        int[] buy = new int[n];
-        //初始化第一天收益
-        sell[0] = 0;
-        buy[0] = -prices[0];
-        for (int i = 1; i < n; ++i) {
-            //第i天卖出收益 = max(第i-1天卖出收益，第i-1天买入收益+当天股价)
-            sell[i] = Math.max(sell[i - 1], buy[i - 1] + prices[i]);
-            //第i天买入收益 = max(第i-1天买入收益，-当天股价)
-            buy[i] = Math.max(buy[i - 1], -prices[i]);
+        int minPrice = prices[0], maxProfit = 0;
+        for(int i = 1; i < prices.length; i++) {
+            maxProfit = Math.max(maxProfit, prices[i] - minPrice);
+            minPrice = Math.min(minPrice, prices[i]);
         }
-        return Math.max(sell[n - 1], buy[n - 1]);
+        return maxProfit;
     }
 }
