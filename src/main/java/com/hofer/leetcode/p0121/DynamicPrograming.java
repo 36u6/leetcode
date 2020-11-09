@@ -8,8 +8,8 @@ package com.hofer.leetcode.p0121;
  */
 public class DynamicPrograming {
     public static void main(String[] args) {
-        int[] fn = new int[16];
         int n = 15;
+        int[] fn = new int[n + 1];
         fn[0] = 0;
         for (int i = 1; i <= n; i++) {
             int cost = Integer.MAX_VALUE;
