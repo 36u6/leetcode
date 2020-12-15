@@ -10,18 +10,13 @@ import java.security.NoSuchAlgorithmException;
  * @author hofer.bhf
  * created on 2020/12/8 10:02 下午
  */
-public class Sha256 {
+public class SecureHashAlgorithm256 {
     public static void main(String[] args) {
         String message = "123456";
-        String md5str = string2MD5(message);
-        String sha1str = string2Sha1(message);
-        String sha256str = String2SHA256(message);
-        String sha256Javastr = String2SHA256StrJava(message);
-        System.out.println("next");
-        System.out.println("md5str:" + md5str);
-        System.out.println("sha1str:" + sha1str);
-        System.out.println("sha256str:" + sha256str);
-        System.out.println("sha256Javastr：" + sha256Javastr);
+        System.out.println("E10ADC3949BA59ABBE56E057F20F883E".equals(string2MD5(message)));
+        System.out.println("7c4a8d09ca3762af61e59520943dc26494f8941b".equals(string2Sha1(message)));
+        System.out.println("8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92".equals(String2SHA256(message)));
+        System.out.println("8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92".equals(String2SHA256StrJava(message)));
     }
 
     /**
