@@ -14,8 +14,11 @@ public class SecureHashAlgorithm256 {
     public static void main(String[] args) {
         String message = "123456";
         System.out.println("E10ADC3949BA59ABBE56E057F20F883E".equals(string2MD5(message)));
+        System.out.println("E10ADC3949BA59ABBE56E057F20F883E".length());
         System.out.println("7c4a8d09ca3762af61e59520943dc26494f8941b".equals(string2Sha1(message)));
+        System.out.println("7c4a8d09ca3762af61e59520943dc26494f8941b".length());
         System.out.println("8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92".equals(String2SHA256(message)));
+        System.out.println("8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92".length());
         System.out.println("8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92".equals(String2SHA256StrJava(message)));
     }
 
