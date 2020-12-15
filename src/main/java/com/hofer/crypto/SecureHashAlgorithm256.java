@@ -11,39 +11,24 @@ import java.security.NoSuchAlgorithmException;
  * created on 2020/12/8 10:02 下午
  */
 public class SecureHashAlgorithm256 {
-    public static void main(String[] args) {
-        String message = "123456";
-        System.out.println("E10ADC3949BA59ABBE56E057F20F883E".equals(string2MD5(message)));
-        System.out.println("E10ADC3949BA59ABBE56E057F20F883E".length());
-        System.out.println("7c4a8d09ca3762af61e59520943dc26494f8941b".equals(string2Sha1(message)));
-        System.out.println("7c4a8d09ca3762af61e59520943dc26494f8941b".length());
-        System.out.println("8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92".equals(String2SHA256(message)));
-        System.out.println("8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92".length());
-        System.out.println("8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92".equals(String2SHA256StrJava(message)));
-    }
-
-    /**
-     * MD5加密 生成32位md5码
-     */
-    public static String string2MD5(String inStr) {
+    public static String string2Md5(String input) {
         MessageDigest md5;
         try {
             md5 = MessageDigest.getInstance("MD5");
-        } catch (Exception e) {
-            System.out.println(e.toString());
+        } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
             return "";
         }
-        char[] charArray = inStr.toCharArray();
+        char[] charArray = input.toCharArray();
         byte[] byteArray = new byte[charArray.length];
 
         for (int i = 0; i < charArray.length; i++) {
             byteArray[i] = (byte) charArray[i];
         }
         byte[] md5Bytes = md5.digest(byteArray);
-        StringBuffer hexValue = new StringBuffer();
-        for (int i = 0; i < md5Bytes.length; i++) {
-            int val = ((int) md5Bytes[i]) & 0xff;
+        StringBuilder hexValue = new StringBuilder();
+        for (byte md5Byte : md5Bytes) {
+            int val = ((int) md5Byte) & 0xff;
             if (val < 16) {
                 hexValue.append("0");
             }
@@ -144,5 +129,16 @@ public class SecureHashAlgorithm256 {
             stringBuffer.append(temp);
         }
         return stringBuffer.toString();
+    }
+
+    public static void main(String[] args) {
+        String message = "123456";
+        System.out.println("E10ADC3949BA59ABBE56E057F20F883E".equals(string2Md5(message)));
+        System.out.println("E10ADC3949BA59ABBE56E057F20F883E".length());
+        System.out.println("7c4a8d09ca3762af61e59520943dc26494f8941b".equals(string2Sha1(message)));
+        System.out.println("7c4a8d09ca3762af61e59520943dc26494f8941b".length());
+        System.out.println("8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92".equals(String2SHA256(message)));
+        System.out.println("8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92".length());
+        System.out.println("8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92".equals(String2SHA256StrJava(message)));
     }
 }
